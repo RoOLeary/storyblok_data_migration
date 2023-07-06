@@ -26,14 +26,6 @@ export default async function handler(req, res) {
           avatar: {
             ...storyblokImgObj,
             alt: author.name,
-            name: '',
-            focus: '',
-            title: '',
-            source: '',
-            copyright: '',
-            fieldtype: 'asset',
-            meta_data: {},
-            is_external_url: false,
           },
           links: author.links.map((link) => {
             return {

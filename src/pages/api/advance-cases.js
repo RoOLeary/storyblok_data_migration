@@ -14,8 +14,8 @@ export default async function handler(req, res) {
 }
 
 async function modifyHtmlImages(html) {
-  const $ = cheerio.load(html, null, false)
-  const $images = $('img')
+  let $ = cheerio.load(html, null, false)
+  let $images = $('img')
   $images.each((i, e) => {
     let attribs = e.attribs
     let imageUrl = attribs.src

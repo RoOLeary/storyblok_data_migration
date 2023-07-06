@@ -30,6 +30,15 @@ async function UploadFileToStoryblok(fileUrl) {
     return {
       filename,
       id: data.id,
+      alt: '',
+      name: '',
+      focus: '',
+      title: '',
+      source: '',
+      copyright: '',
+      fieldtype: 'asset',
+      meta_data: {},
+      is_external_url: false,
     }
   } catch (error) {
     console.log(error.message)
@@ -37,7 +46,7 @@ async function UploadFileToStoryblok(fileUrl) {
 }
 
 async function fileUpload(signed_request, file) {
-  const form = new FormData()
+  let form = new FormData()
   for (let key in signed_request.fields) {
     form.append(key, signed_request.fields[key])
   }

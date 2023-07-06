@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       id: author,
       startsWith: 'authors',
     })
-    const newTags = await Promise.all(
+    let newTags = await Promise.all(
       tags.map(async (id) => {
         return await getNewStoryIDFromOldID({
           id,
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         })
       })
     )
-    const newCategories = await Promise.all(
+    let newCategories = await Promise.all(
       categories.map(async (id) => {
         return await getNewStoryIDFromOldID({
           id,
@@ -54,14 +54,6 @@ export default async function handler(req, res) {
           featuredimage: {
             ...storyblokImgObj,
             alt: post.featuredimage.alttext,
-            name: '',
-            focus: '',
-            title: '',
-            source: '',
-            copyright: '',
-            fieldtype: 'asset',
-            meta_data: {},
-            is_external_url: false,
           },
         },
       },
