@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         content: {
           id: tag.id,
           name: tag.name,
-          component: 'Tag',
+          component: 'tag',
           description: tag.description,
         },
       },

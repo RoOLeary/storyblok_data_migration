@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         content: {
           id: category.id,
           name: category.name,
-          component: 'Category',
+          component: 'category',
           description: category.description,
         },
       },

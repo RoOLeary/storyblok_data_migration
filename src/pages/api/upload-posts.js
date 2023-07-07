@@ -45,7 +45,7 @@ export default async function handler(req, res) {
         parent_id: 328861618, //Posts Folder id
         content: {
           title: post.title,
-          component: 'Post',
+          component: 'post',
           excerpt: convertHtmlToJson(post.excerpt),
           content: convertHtmlToJson(post.content),
           author: newAuthor,

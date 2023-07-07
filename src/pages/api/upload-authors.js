@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         content: {
           id: author.id,
           name: author.name,
-          component: 'Author',
+          component: 'author',
           description: author.description,
           avatar: {
             ...storyblokImgObj,
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
           links: author.links.map((link) => {
             return {
               ...link,
-              component: 'Link',
+              component: 'link',
             }
           }),
         },
