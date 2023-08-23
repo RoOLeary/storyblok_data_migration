@@ -9,7 +9,7 @@ let exampleHtml = `
 `
 
 export default async function handler(req, res) {
-  let newHtml = modifyHtmlImages(exampleHtml)
+  let newHtml = await modifyHtmlImages(exampleHtml)
   res.status(200).json({ message: 'Sucess!', exampleHtml, newHtml })
 }
 
