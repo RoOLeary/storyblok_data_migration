@@ -1,11 +1,8 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { addToStoryblok } from '@/lib/addToStoryblok'
 import { UploadFileToStoryblok } from '@/lib/assetUpload'
 import convertHtmlToJson from '@/lib/convertHtmlToJson'
 import { delay } from '@/lib/delay'
 import getNewStoryIDFromOldID from '@/lib/getNewStoryIDFromOldID'
-
 export default async function handler(req, res) {
   let response = await fetch(
     'https://raw.githubusercontent.com/dipankarmaikap/fake-json-data/main/posts.json'
@@ -15,12 +12,11 @@ export default async function handler(req, res) {
     let author = post.author
     let categories = post.categories
     let tags = post.tags
-
     let newAuthor = await getNewStoryIDFromOldID({
       id: author,
       startsWith: 'authors',
     })
-    let newTags = await Promise.all(
+    const newTags = await Promise.all(
       tags.map(async (id) => {
         return await getNewStoryIDFromOldID({
           id,
@@ -28,7 +24,7 @@ export default async function handler(req, res) {
         })
       })
     )
-    let newCategories = await Promise.all(
+    const newCategories = await Promise.all(
       categories.map(async (id) => {
         return await getNewStoryIDFromOldID({
           id,
@@ -42,7 +38,7 @@ export default async function handler(req, res) {
       story: {
         name: post.title,
         slug: post.slug,
-        parent_id: 328861618, //Posts Folder id
+        parent_id: 328861618, //Your Posts Folder id
         content: {
           title: post.title,
           component: 'post',
@@ -61,6 +57,6 @@ export default async function handler(req, res) {
     await delay(500)
   }
   res.status(200).json({
-    message: 'Sucess!',
+    message: 'Success!',
   })
 }

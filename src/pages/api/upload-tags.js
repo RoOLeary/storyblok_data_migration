@@ -7,7 +7,9 @@ export default async function handler(req, res) {
   let response = await fetch(
     'https://raw.githubusercontent.com/dipankarmaikap/fake-json-data/main/tags.json'
   )
+  
   let tags = await response.json()
+  console.log('tags', response)
   for (let tag of tags) {
     await addToStoryblok({
       publish: '1', //you can add false value if you want this to be draft
@@ -23,7 +25,7 @@ export default async function handler(req, res) {
         },
       },
     })
-    await delay(500)
+    // await delay(500)
   }
   res.status(200).json({ message: 'Sucess!' })
 }
